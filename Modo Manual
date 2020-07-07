@@ -1,4 +1,5 @@
-function varargout = PM2(varargin)
+function varargout = PM2(varargin
+%%%%%%%%%%%%%%%%%%%
 % PM2 MATLAB code for PM2.fig
 %      PM2, by itself, creates a new PM2 or raises the existing
 %      singleton*.
