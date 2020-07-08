@@ -1,0 +1,331 @@
+function varargout = ModoLinea(varargin)
+% MODOLINEA MATLAB code for ModoLinea.fig
+%      MODOLINEA, by itself, creates a new MODOLINEA or raises the existing
+%      singleton*.
+%
+%      H = MODOLINEA returns the handle to a new MODOLINEA or the handle to
+%      the existing singleton*.
+%
+%      MODOLINEA('CALLBACK',hObject,eventData,handles,...) calls the local
+%      function named CALLBACK in MODOLINEA.M with the given input arguments.
+%
+%      MODOLINEA('Property','Value',...) creates a new MODOLINEA or raises the
+%      existing singleton*.  Starting from the left, property value pairs are
+%      applied to the GUI before ModoLinea_OpeningFcn gets called.  An
+%      unrecognized property name or invalid value makes property application
+%      stop.  All inputs are passed to ModoLinea_OpeningFcn via varargin.
+%
+%      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
+%      instance to run (singleton)".
+%
+% See also: GUIDE, GUIDATA, GUIHANDLES
+
+% Edit the above text to modify the response to help ModoLinea
+
+% Last Modified by GUIDE v2.5 08-Jul-2020 11:27:08
+
+% Begin initialization code - DO NOT EDIT
+gui_Singleton = 1;
+gui_State = struct('gui_Name',       mfilename, ...
+                   'gui_Singleton',  gui_Singleton, ...
+                   'gui_OpeningFcn', @ModoLinea_OpeningFcn, ...
+                   'gui_OutputFcn',  @ModoLinea_OutputFcn, ...
+                   'gui_LayoutFcn',  [] , ...
+                   'gui_Callback',   []);
+if nargin && ischar(varargin{1})
+    gui_State.gui_Callback = str2func(varargin{1});
+end
+
+if nargout
+    [varargout{1:nargout}] = gui_mainfcn(gui_State, varargin{:});
+else
+    gui_mainfcn(gui_State, varargin{:});
+end
+% End initialization code - DO NOT EDIT
+
+
+% --- Executes just before ModoLinea is made visible.
+function ModoLinea_OpeningFcn(hObject, eventdata, handles, varargin)
+% This function has no output args, see OutputFcn.
+% hObject    handle to figure
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+% varargin   command line arguments to ModoLinea (see VARARGIN)
+
+
+imagen=imread('fondo16.jpg');
+image(imagen,'Parent',handles.axes2);
+set(handles.axes2,'XTick',[],'YTick',[]);
+box on;
+grid on;
+
+[a,map]=imread('CASA3.jpg');
+[r,c,d]=size(a);
+x=ceil(r/140);
+y=ceil(c/160);
+g=a(1:x:end,1:y:end,:);
+g(g==300)=5.5*300;
+set(handles.pushbutton2,'CData',g);
+global tl1Actual tl2Actual tl3Actual
+tl1Actual=0;
+tl2Actual=0;
+tl3Actual=0;
+
+% Choose default command line output for ModoLinea
+handles.output = hObject;
+
+% Update handles structure
+guidata(hObject, handles);
+
+% UIWAIT makes ModoLinea wait for user response (see UIRESUME)
+% uiwait(handles.figure1);
+
+
+% --- Outputs from this function are returned to the command line.
+function varargout = ModoLinea_OutputFcn(hObject, eventdata, handles) 
+% varargout  cell array for returning output args (see VARARGOUT);
+% hObject    handle to figure
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Get default command line output from handles structure
+varargout{1} = handles.output;
+
+
+
+function punto_x1_Callback(hObject, eventdata, handles)
+% hObject    handle to punto_x1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of punto_x1 as text
+%        str2double(get(hObject,'String')) returns contents of punto_x1 as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function punto_x1_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to punto_x1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function punto_y1_Callback(hObject, eventdata, handles)
+% hObject    handle to punto_y1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of punto_y1 as text
+%        str2double(get(hObject,'String')) returns contents of punto_y1 as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function punto_y1_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to punto_y1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function punto_z1_Callback(hObject, eventdata, handles)
+% hObject    handle to punto_z1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of punto_z1 as text
+%        str2double(get(hObject,'String')) returns contents of punto_z1 as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function punto_z1_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to punto_z1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function punto_x2_Callback(hObject, eventdata, handles)
+% hObject    handle to punto_x2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of punto_x2 as text
+%        str2double(get(hObject,'String')) returns contents of punto_x2 as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function punto_x2_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to punto_x2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function punto_y2_Callback(hObject, eventdata, handles)
+% hObject    handle to punto_y2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of punto_y2 as text
+%        str2double(get(hObject,'String')) returns contents of punto_y2 as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function punto_y2_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to punto_y2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function punto_z2_Callback(hObject, eventdata, handles)
+% hObject    handle to punto_z2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of punto_z2 as text
+%        str2double(get(hObject,'String')) returns contents of punto_z2 as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function punto_z2_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to punto_z2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes on button press in pushbutton1.
+function pushbutton1_Callback(hObject, eventdata, handles)
+
+global arduino tl1Actual tl2Actual tl3Actual
+rotate3d on; hold on;box on;
+xlabel('X');ylabel('Y');zlabel('Z');
+
+X0 = str2double(get(handles.punto_x1,'String'));
+Y0 = str2double(get(handles.punto_y1,'String'));
+Z0 = str2double(get(handles.punto_z1,'String'));
+
+X1 = str2double(get(handles.punto_x2,'String'));
+Y1 = str2double(get(handles.punto_y2,'String'));
+Z1 = str2double(get(handles.punto_z2,'String'));
+
+if rango(X0,Y0,Z0)==true && rango(X1,Y1,Z1)==true
+tl = inversh(X0,Y0,Z0)
+%%%memoria
+tl1Actual = tl(1) - tl1Actual
+tl2Actual = tl(2) - tl2Actual
+tl3Actual = tl(3) - tl3Actual
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+[PX,PY,PZ]=Periodo(tl1Actual,tl2Actual,tl3Actual);
+[pasosPx,pasosPy,pasosPz]=angles2steps(tl1Actual,tl2Actual,tl3Actual)
+pack1 = strcat(int2str(pasosPx), ',', int2str(pasosPy), ',', int2str(pasosPz),...
+    ',',int2str(PX), ',', int2str(PY), ',', int2str(PZ),',')
+resp1=comAM(pack1);
+tl2=inversh(X1,Y1,Z1)
+tl1Actual = tl2(1) - tl1Actual;
+tl2Actual = tl2(2) - tl2Actual;
+tl3Actual = tl2(3) - tl3Actual;
+[PX,PY,PZ]=Periodo(tl1Actual,tl2Actual,tl3Actual);
+pack2 = strcat(int2str(tl1Actual), ',', int2str(tl2Actual), ',', int2str(tl3Actual),...
+    ',',int2str(PX), ',', int2str(PY), ',', int2str(PZ),',')
+
+resp2=comAM(pack2);
+axes(handles.axes1)
+
+plot3([X0 X1],[Y0 Y1],[Z0 Z1],'color','b')
+set(handles.text5,'String',X0);set(handles.text6,'String',Y0);set(handles.text7,'String',Z0);
+set(handles.text8,'String',X1);set(handles.text9,'String',Y1);set(handles.text10,'String',Z1);
+else
+      warndlg('Valor fuera de rango','Advertencia')
+end
+%Ecuación paramétricas de la línea recta en el espacio
+% t=0.05;
+% x = X1 + X2*t;
+% y = Y1 + Y2*t;
+% z = Z1 + Z3*t;
+% 
+%         difT1 = T1 - T1Actual;
+%         difT2 = T2 - T2Actual;
+%         difT3 = T3 - T3Actual;
+        
+
+
+% --- Executes on button press in pushbutton2.
+function pushbutton2_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+close(ModoLinea)
+Pantalla_Principal1
+
+
+% --- Executes on button press in pushbutton3.
+function pushbutton3_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton3 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+cla reset
+handles.punto_x1.String = '0';handles.punto_y1.String = '0';handles.punto_z1.String = '0';
+handles.punto_x2.String = '0';handles.punto_y2.String = '0';handles.punto_z2.String = '0';
+
+handles.text5.String = '0';handles.text6.String = '0';handles.text7.String = '0';
+handles.text8.String = '0';handles.text9.String = '0';handles.text10.String = '0';
+
+
+
+function edit10_Callback(hObject, eventdata, handles)
+% hObject    handle to edit10 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit10 as text
+%        str2double(get(hObject,'String')) returns contents of edit10 as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function edit10_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit10 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
